@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Github User Details</title>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+<script type="text/javascript" src="controllers.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+<body>
+<div class="container" ng-controller="Mycontroller">
+	<div class="container-section">
+		<div class="search-section ">
+			<label class="control-label" for="search"><h2>Search GitHub User</h2></label>
+			<div class="form-group form-item ">
+				<input id="search" type="text" class="form-control" placeholder="Enter Github user login" ng-model="userName"><span class="glyphicon glyphicon-group"></span></input>
+				<button id="searchUser"class="form-control btn btn-success " ng-click="userDetail()">Search <span class="glyphicon glyphicon-search"></span></button>
+				<label for="sortType" class="control-label pull-left">Sort View</label>
+					<select id="sortType" ng-model="userView" class="form-control">
+					<option  value ="name" selected>Name</option>
+					<option value="followers">Followers</option>
+					<option value="location" >Location</option>
+				</select>	
+				<div class="radio">
+					<label class="radio-inline"><input  type="radio" ng-model="direction"  checked="checked" name="radioGroup">Ascending</label>
+					<label class="radio-inline"><input  type="radio"  ng-model="direction" value= "reverse" name="radioGroup">Descending</label>
+				</div>
+			</div>
+		</div>
+      	</div>
+	<div id="user-container"  >
+		<div class="userCard" ng-repeat="user in allUser|filter:userName|orderBy:userView:direction">
+			<div class="row">
+				<div class ="user_avatar box col-xs-6 ">
+					<img class=" img-thumbnail img-responsive"  ng-src="{{user.avatar_url}}"/>
+				</div>
+				<div class="userBio text-capitalize box col-xs-6">
+					<img id="cancelImg" src="Cancel.png" ng-click="deleteUser($event)" data-login=" {{user.login}}" >		
+					<h1 class="text-capitalize">{{name}}</h1>
+					<h3>Login Id: {{user.login}}</h3>
+					<h3>Location : {{user.location}}</h3>
+					<h3>Followers: {{user.followers}}</h3>
+					<button class="btn btn-info showMore form-control" data-toggle="modal"  data-target={{"#fullBio"+$index}}>Show More</button>	
+				</div>
+			</div>
+			<div id ={{"fullBio"+$index}} class="fullBio modal fade text-center text-capitalize hideBio"    >
+				<div class="modal-dialog" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">{{user.name}}</h4>
+						</div>
+						<div class="modal-body">	
+							<ul class="fullBioList list-group">
+								<li class="list-group-item">Id :<span> {{user.id}}</span></li>
+								<li class="list-group-item">Gravatar Id : <span>{{user.gravatar_id}}</span></li>
+								<li class="list-group-item">Url : <span>{{user.url}}</span></li>
+								<li class="list-group-item">	<a href="{{user.html_url}}"><button class="btn btn-info form-control">Catch me on Github</button>	</a> </li>
+								<li class="list-group-item">	<a href="{{user.followers_url}}">	<button class=" form-control btn btn-info">Show Followers</button>	</a>	</li>
+								<li class="list-group-item">	<a href="{{user.following_url}}">	<button class="form-control btn btn-info">Following Me</button>	</a>	</li>
+								<li class="list-group-item">	<a href="{{user.Gists_url}}">	<button class=" form-control btn btn-info">Gists</button>		</a>	</li>
+								<li class="list-group-item">	<a href="{{user.starred_url}}">	<button class=" form-control btn btn-info">Starred</button>		</a>	</li>
+								<li class="list-group-item">	<a href="{{user.subscriptions_url}}">	<button class=" form-control btn btn-info">Subscriptions </button>	</a>	</li>
+								<li class="list-group-item">	<a href="{{user.organizations_url}}">	<button class=" form-control btn btn-info">Organization </button>	</a>	</li>
+								<li class="list-group-item">	<a href="{{user.repos_url}}">	<button class="form-control btn btn-info">Repos</button>	</a>	</li>
+								<li class="list-group-item">	<a href="{{user.events_url}}">	<button class=" form-control btn btn-info">Events</button>	</a>	</li>
+								<li class="list-group-item">	<a href="{{user.received_events_url}}">	<button class=" form-control btn btn-info">Received Events</button>	</a>	</li>
+								<li class="list-group-item">Type : <span>{{user.type}}</span></li>
+								<li class="list-group-item">Site Admin : <span>{{user.site_admin}}</span></li>
+								<li class="list-group-item">Company : <span>{{user.company}}</span></li>
+								<li class="list-group-item"> <a href="{{user.blog}}">	<button class=" form-control btn btn-info">My Blogs</button></a>	</li>
+								<li class="list-group-item">Email : <span>{{user.email}}</span></li>
+								<li class="list-group-item">Hireable : <span>{{user.hireable}}</span></li>
+								<li class="list-group-item">Followers : <span>{{user.followers}}</span></li>
+								<li class="list-group-item">Following : <span>{{user.following}}</span> </li>
+								<li class="list-group-item">Created When :<span> {{user.created_at}}</span></li>
+								<li class="list-group-item">Last Updated : <span>{{user.updated_at}}</span> </li>
+							</ul>
+						</div>
+						<div class="modal-footer">
+          						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+						<div>			
+					</div>
+				</div>
+			</div>	
+			
+		</div>
+	</div>
+</div>
+<script   src="https://code.jquery.com/jquery-2.2.1.min.js"   integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
