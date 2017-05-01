@@ -1,0 +1,156 @@
+/*@import "main.css";*/
+
+/*@main-color: white;*/
+/*@dominos-blue:#0078ae;*/
+/*@dominos-background:#ffffff;*/
+/*@dominos-red:#e3193b;*/
+/*@card-color : lightgrey;*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #666;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #444;
+  overflow-x: hidden;
+
+}
+.content
+{
+  padding: 100px;
+  height: auto;
+  overflow: hidden;
+}
+
+.content-form
+{
+  width:70%;
+  margin: 0 auto;
+  padding: 30px;
+  background: #f5f5f5;
+  border: 2px solid #ccc;
+  border-radius:5px;
+}
+
+.form-row
+{
+  padding-bottom: 10px;
+}
+
+.start-card
+{
+  background: #0078ae;
+  color:white;
+  margin-bottom: 20px;
+  height:100px;
+  line-height: 100px;
+  border-radius: 5px;
+}
+.start-card div{
+  line-height: inherit;
+}
+.start-card div h1
+{
+  margin: 0;
+  line-height: inherit;
+}
+
+.custom-btn
+{
+  padding: 10px;
+  background-color: #e3193b;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+}
+form{
+  padding: 20px;
+}
+.order-title h2
+{
+  font-size: 2em;
+  margin-bottom: .666666667em;
+  position: relative;
+  z-index: 16;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #0078ae;
+}
+
+.order-content
+{
+  background-color: #e6e6e6;
+  padding: 20px;
+  overflow: hidden;
+  height: auto;
+  border-radius: 10px;
+}
+.subtitle
+{
+  font-size: 1.333333333em;
+  margin-bottom: .9375em;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #0078ae;
+}
+
+.size-desc
+{
+  line-height: 1.25;
+  margin: 0 0 1.5em;
+}
+
+.size-option input[type="radio"]
+{
+  margin-bottom: 10px;
+}
+.border-right
+{
+  border-right: 1px solid #ccc;
+}
+.size-card
+{
+  margin-bottom: 20px;
+  min-height: 200px;
+}
+
+.order-state
+{
+  height:60px;
+  line-height: 60px;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 50px;
+  background-color: #0078ae;
+}
+
+.order{
+
+
+}
+.order-state .order,  .order div, .order div h4
+{
+  line-height: inherit;
+}
+
+.order div h4
+{
+  margin: 0;
+}
+
+.active-section
+{
+  background-color: #e3193b;
+  border-radius: 50px;
+}
+
+.inactive-section
+{
+background-color: #0078ae;;
+}
+.btn-size
+{
+  width: 150px;
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="pizza">
+<div  ng-controller="pizzaController" class="container-fluid">
+
+    <div class="content">
+        <section ng-show="first" >
+            <div class="start-card row">
+                <div class="col-md-6 text-center">
+                    <h1>START YOUR ORDER</h1>
+                </div>
+                <div class="col-md-6 text-center ">
+                    <button class="btn custom-btn" data-toggle="modal" data-target="#myModal">DELIVERY</button>
+                </div>
+            </div>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Delivery Details</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form novalidate action="">
+                                <div>
+                                    <div class=" row form-row">
+                                        <div class="col-md-2 ">
+                                            <label for="addressType">Address Type</label>
+                                        </div>
+                                        <div class="col-md-10 ">
+                                            <select ng-model="user.type" class ="form-control" name="addressType" id="address-type">
+                                                <option value="house">House</option>
+                                                <option value="office">Office</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class=" row form-row">
+                                        <div class="col-md-2 ">
+                                            <label for="address">Street Address</label>
+                                        </div>
+                                        <div class="col-md-10 ">
+                                            <input ng-model="user.address" type="text"  class="form-control"name="address">
+                                        </div>
+                                    </div>
+                                    <div class=" row form-row">
+                                        <div class="col-md-2 ">
+                                            <label for="suit">Suit/Apt#</label>
+                                        </div>
+                                        <div class="col-md-10 ">
+                                            <input type="text" ng-model="user.suit" class="form-control" name="suit">
+                                        </div>
+                                    </div>
+                                    <div class=" row form-row">
+                                        <div class="col-md-2 ">
+                                            <label for="city">City</label>
+                                        </div>
+                                        <div class="col-md-10 ">
+                                            <input type="text" class="form-control" ng-model="user.city" name="city">
+                                        </div>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 ">
+                                            <label for="state">State</label>
+                                        </div>
+                                        <div class="col-md-10 ">
+                                            <input type="text" class="form-control" ng-model="user.state" name="state">
+                                        </div>
+                                    </div>
+                                    <div class="row form-row">
+                                        <div class="col-md-2 ">
+                                            <label for="zip">ZipCode</label>
+                                        </div>
+                                        <div class="col-md-10 ">
+                                            <input type="text" class="form-control" ng-model="user.zip" name="zip">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-large custom-btn" ng-click="submit(user)"> Continue for delivery</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section ng-show="second">
+               <div class="order-state text-center row">
+                   <div class="order row ">
+                       <div class="col-md-4 active-section">
+                            <h4>Size & Crust </h4>
+                       </div>
+                       <div class="col-md-4">
+                           <h4>Cheese & Sauce</h4>
+                       </div>
+                       <div class="col-md-4">
+                           <h4>Toppings</h4>
+                       </div>
+                   </div>
+               </div>
+            <div class="order-content row">
+                <div class="order-title col-md-12">
+                    <h2> CHOOSE SIZE & CRUST </h2>
+                </div>
+                <div class="size-card col-md-3 border-right">
+                    <div class="subtitle">
+                        HAND TOSSED
+                    </div>
+                    <div class="size-desc">
+                        Garlic seasoned crust with a rich, buttery taste.
+                    </div>
+                    <div class="size-option">
+                        <input type="radio" ng-model="crust.tossed" value="smallHandTossed"  name="tossed" >  Small(10")<br>
+                        <input type="radio" ng-model="crust.tossed" value="mediumHandTossed" name="tossed" > Medium(12")<br>
+                        <input type="radio" ng-model="crust.tossed" value="largeHandTossed" name="tossed" > Large(14")<br>
+                        <input type="radio" ng-model="crust.tossed" value="xtraLargeHandTossed" name="tossed" > X-Large(16")<br>
+                    </div>
+                </div>
+                <div class=" size-card col-md-3 border-right">
+                    <div class="subtitle">
+                        HANDMADE PAN
+                    </div>
+                    <div class="size-desc">
+                        Two layers of cheese, toppings to the edge, baked in a pan for a crust that is golden and crispy with a buttery taste
+                    </div>
+                    <div class="size-option">
+                        <input type="radio" ng-model="crust.tossed" value="mediumHandmadePan" name="tossed" > Medium(12")<br>
+                    </div>
+                </div>
+                <div class="size-card col-md-3 border-right">
+                    <div class="subtitle">
+                        CRUNCHY THIN CRUST
+                    </div>
+                    <div class="size-desc">
+                        Thin enough for the optimum crispy to crunchy ratio.
+                    </div>
+                    <div class="size-option">
+                        <input type="radio" ng-model="crust.tossed" value="mediumThinCrust" name="tossed" > Medium(12")<br>
+                        <input type="radio" ng-model="crust.tossed" value="largeThinCrust" name="tossed" > Large(14")<br>
+                    </div>
+                </div>
+                <div class="size-card col-md-3 ">
+                    <div class="subtitle">
+                        BROOKLYN STYLE
+                    </div>
+                    <div class="size-desc">
+                        Hand stretched to be big, thin and perfectly foldable
+                    </div>
+                    <div class="size-option">
+                        <input type="radio" ng-model="crust.tossed" value="largeBrooklyn" name="tossed" > Large(14")<br>
+                        <input type="radio" ng-model="crust.tossed" value="xtraLargeBrookLyn" name="tossed" > X-Large(16")<br>
+                    </div>
+                </div>
+                <div class=" size-card col-md-6">
+                    <div class="subtitle">
+                        GLUTEN FREE CRUST
+                    </div>
+                    <div class="size-desc">
+                        Domino's pizza made with a Gluten Free Crust
+                    </div>
+                    <div class="size-option">
+                        <input type="radio" ng-model="crust.tossed"  value="smallGluten" selected name="tossed" >  Small(10")<br>
+                    </div>
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <div class="col-md-6"><button ng-click="size(crust)" class="btn custom-btn btn-size"> Build</button></div>
+                    <div class="col-md-6"><button ng-click="cancel()" class="btn custom-btn btn-size"> Cancel</button></div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section ng-show="third">
+            <div class="order-state text-center row">
+                <div class="order row active-section">
+                    <div class="col-md-4" >
+                        <h4>Size & Crust </h4>
+                    </div>
+                    <div class="col-md-4 ">
+                        <h4>Cheese & Sauce</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Toppings</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="order-content row">
+                <div class="order-title col-md-12">
+                    <h2> CHOOSE TOPPINGS </h2>
+                </div>
+                <div class="size-card col-md-6 border-right">
+                    <div class="subtitle">
+                        CHOOSE MEATS
+                    </div>
+                    <div class="topping">
+                        <label class="col-md-6" ng-repeat="meat in meats">
+                            <input type="checkbox" ng-model="meat.selected"> {{meat.name}}
+                            quantity:<input type="number"  ng-show="meat.selected" ng-model="meat.quantity">
+                        </label>
+
+                    </div>
+                </div>
+                <div class="size-card col-md-6 border-right">
+                    <div class="subtitle">
+                        CHOOSE NON-MEATS
+                    </div>
+                    <div class="topping">
+                        <label class="col-md-6" ng-repeat="noMeat in noMeats">
+                            <input type="checkbox" ng-model="noMeat.selected"> {{noMeat.name}}
+                            quantity:<input type="number"  ng-show="noMeat.selected" ng-model="noMeat.quantity">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <div class="col-md-6"><button ng-click="submitTopp()" class="btn custom-btn btn-size"> Build</button></div>
+                    <div class="col-md-6"><button ng-click="cancel()" class="btn custom-btn btn-size"> Cancel</button></div>
+                </div>
+            </div>
+        </section>
+
+        <section ng-show="last">
+            <div class="order-state text-center row">
+                <div class="order row active-section">
+                    <span style="font-size: 30px">User Dashboard</span>
+                </div>
+            </div>
+            <div class="order-content row">
+                <div class="order-title col-md-12">
+                    <h2> Graphical view </h2>
+                </div>
+                <div id="piechart"  class="col-md-6" style=" height: 500px;"></div>
+                <div id="sankey"  class="col-md-6" style=" height: 500px;"></div>
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular-animate.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!--<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>-->
+<script src="app.js"></script>
+</body>
+</html>
